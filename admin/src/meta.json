@@ -2,9 +2,9 @@
   "name": "admin",
   "plugins": [
     {
-      "name": "Chakra UI",
-      "description": "Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.",
-      "url": "https://chakra-ui.com/docs/getting-started"
+      "name": "Ant Design",
+      "description": "A design system for enterprise-level products. Create an efficient and enjoyable work experience.",
+      "url": "https://ant.design/docs/react/introduce"
     },
     {
       "name": "SASS/SCSS",
@@ -22,14 +22,14 @@
       "url": "https://storybook.js.org/docs/react/get-started/introduction"
     },
     {
-      "name": "Environment Variables",
-      "description": "Use environment variables in your react project for server side, client or both.",
-      "url": "https://create-react-app.dev/docs/adding-custom-environment-variables/"
-    },
-    {
       "name": "Reverse Proxy",
       "description": "Proxying some URLs can be useful when you have a separate API backend development server and you want to send API requests on the same domain.",
       "url": "https://create-react-app.dev/docs/proxying-api-requests-in-development/#configuring-the-proxy-manually"
+    },
+    {
+      "name": "SWR",
+      "description": "React Hooks library for data fetching from Vercel",
+      "url": "https://swr.vercel.app/"
     },
     {
       "name": "React Redux",

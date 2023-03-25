@@ -32,11 +32,11 @@ superplate is a Next.js all-in-one project generator. Create your project with t
 To learn more about **superplate**, please check out the [Documentation](https://github.com/pankod/superplate).
 
 
-### **Chakra UI**
+### **Ant Design**
 
-Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.
+A design system for enterprise-level products. Create an efficient and enjoyable work experience.
 
-[Go To Documentation](https://chakra-ui.com/docs/getting-started)
+[Go To Documentation](https://ant.design/docs/react/introduce)
 
 
 ### **SASS/SCSS**
@@ -60,18 +60,18 @@ Storybook is an open source tool for developing UI components in isolation for R
 [Go To Documentation](https://storybook.js.org/docs/react/get-started/introduction)
 
 
-### **Environment Variables**
-
-Use environment variables in your react project for server side, client or both.
-
-[Go To Documentation](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-
-
 ### **Reverse Proxy**
 
 Proxying some URLs can be useful when you have a separate API backend development server and you want to send API requests on the same domain.
 
 [Go To Documentation](https://create-react-app.dev/docs/proxying-api-requests-in-development/#configuring-the-proxy-manually)
+
+
+### **SWR**
+
+React Hooks library for data fetching from Vercel
+
+[Go To Documentation](https://swr.vercel.app/)
 
 
 ### **React Redux**

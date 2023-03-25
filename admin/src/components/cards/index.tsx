@@ -1,19 +1,17 @@
 import React from "react";
-import { SimpleGrid, Box, Heading, Text } from "@chakra-ui/react";
+import { Row, Col } from "antd";
 
+import { Card } from "components";
 import data from "meta.json";
 
 export const Cards: React.FC = () => {
   return (
-    <SimpleGrid columns={4} spacing={10} px={20} py={10}>
+    <Row style={{ flex: 1 }}>
       {(data?.plugins ?? []).map((plugin) => (
-        <Box key={plugin.name}>
-          <Heading fontSize={16} fontWeight="500" py={5}>
-            {plugin.name}
-          </Heading>
-          <Text fontSize={14}>{plugin.description}</Text>
-        </Box>
+        <Col md={6} key={plugin.name}>
+          <Card title={plugin.name}>{plugin.description}</Card>
+        </Col>
       ))}
-    </SimpleGrid>
+    </Row>
   );
 };

@@ -9,20 +9,19 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Basic = () => <Button variant="solid">Submit</Button>;
+export const Basic = () => <Button type="primary">Submit</Button>;
 
 export const DynamicVariables = () => {
   const label = text("label", "Submit");
-  const variant = select(
-    "variant",
-    ["solid", "ghost", "outline", "link", "unstyled"],
-    "solid"
+  const type = select(
+    "type",
+    ["default", "primary", "ghost", "dashed", "link", "text"],
+    "default"
   );
-  const size = select("size", ["sm", "md", "lg", "xs"], "md");
-  const colorScheme = select("colorScheme", ["blue", "teal"], "teal");
+  const size = select("size", ["small", "middle", "large"], "middle");
 
   return (
-    <Button variant={variant} size={size} colorScheme={colorScheme}>
+    <Button type={type} size={size}>
       {label}
     </Button>
   );

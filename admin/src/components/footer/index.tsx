@@ -1,71 +1,61 @@
 import React, { CSSProperties } from "react";
-import { Flex, Center } from "@chakra-ui/react";
+import { Space } from "antd";
+import {
+  GithubOutlined,
+  TwitterOutlined,
+  YoutubeOutlined,
+  LinkedinOutlined,
+} from "@ant-design/icons";
 
 export const Footer: React.FC = () => {
   const iconStyle: CSSProperties = {
     fontSize: 22,
     color: "#fff",
-    marginRight: "0.25rem",
-    marginLeft: "0.25rem",
   };
   return (
-    <Center bg="main.100" py={10}>
-      <Flex flexDirection="column">
-        <a href="https://github.com/pankod" target="_blank">
-          <img
-            src="/icons/pankod-icon.svg"
-            alt="pankod"
-            width="140"
-            height="28"
-          />
-        </a>
-        <Flex mt={5}>
+    <div
+      style={{
+        backgroundColor: "#282c34",
+        color: "#fff",
+        textAlign: "center",
+        paddingTop: 32,
+        paddingBottom: 32,
+      }}
+    >
+      <Space direction="vertical" size="large">
+        <img
+          src="/icons/pankod-icon.svg"
+          alt="pankod"
+          width="140"
+          height="28"
+        />
+        <Space align="center" size="middle">
           <a href="https://github.com/pankod" target="_blank" style={iconStyle}>
-            <img
-              src="/icons/github-icon.svg"
-              alt="github"
-              width="28"
-              height="29"
-            />
+            <GithubOutlined />
           </a>
           <a
             href="https://twitter.com/PankodDev"
             target="_blank"
             style={iconStyle}
           >
-            <img
-              src="/icons/twitter-icon.svg"
-              alt="twitter"
-              width="28"
-              height="28"
-            />
+            <TwitterOutlined />
           </a>
           <a
             href="https://www.youtube.com/channel/UCBGOeQkv1XW3ptryLWlQbAQ"
             target="_blank"
             style={iconStyle}
           >
-            <img
-              src="/icons/youtube-icon.svg"
-              alt="youtube"
-              width="28"
-              height="29"
-            />
+            <YoutubeOutlined />
           </a>
           <a
             href="https://www.linkedin.com/company/pankod-yazilim-ve-danismanlik/"
             target="_blank"
             style={iconStyle}
           >
-            <img
-              src="/icons/linkedin-icon.svg"
-              alt="linkedin"
-              width="28"
-              height="32"
-            />
+            <LinkedinOutlined />
           </a>
-        </Flex>
-      </Flex>
-    </Center>
+        </Space>
+      </Space>
+    </div>
   );
 };

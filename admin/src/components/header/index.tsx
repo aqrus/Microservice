@@ -1,12 +1,11 @@
 import React from "react";
-import { Center } from "@chakra-ui/react";
 
 import { Logo } from "components";
 
 export const Header: React.FC = () => {
   return (
-    <Center bg="header.100">
+    <div style={{ backgroundColor: "#20232a", textAlign: "center" }}>
       <Logo />
-    </Center>
+    </div>
   );
 };
