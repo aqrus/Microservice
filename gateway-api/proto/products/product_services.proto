@@ -1,0 +1,15 @@
+syntax = "proto3";
+package pb;
+option go_package = "aqrus/Microservice/gateway-api/pb";
+
+import "products/product_requests.proto";
+import "products/product_responses.proto";
+import "google/api/annotations.proto";
+service ProductService {
+    rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {
+        option (google.api.http) = {
+          post: "/v1/products"
+          body: "*"
+        };
+    }
+}

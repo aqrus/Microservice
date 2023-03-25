@@ -1,0 +1,92 @@
+syntax = "proto3";
+package pb;
+option go_package = "aqrus/Microservice/gateway-api/pb";
+
+import "google/protobuf/timestamp.proto";
+
+message Product {
+    string id = 1;
+    string brand = 2;
+    string name = 3;
+    CPU cpu = 4;
+    Memory ram = 5;
+    repeated GPU gpus = 6;
+    repeated Storage storage = 7;
+    Screen screen = 8;
+    Keyboard Keyboard = 9;
+    oneof weight {
+        double weight_kg = 10;
+        double weight_lb = 11;
+    }
+    double price_usd = 12;
+    uint32 rase_year = 13;
+    google.protobuf.Timestamp updated_at = 14;
+}
+
+message CPU {
+    string brand = 1;
+    string name = 2;
+    uint32 number_cores = 3;
+    uint32 number_threads = 4;
+    double min_ghz = 5;
+    double max_ghz = 6;
+}
+
+message GPU {
+    string brand = 1;
+    string name = 2;
+    double min_ghz = 5;
+    double max_ghz = 6;
+    Memory memory  = 7;
+}
+
+message Memory {
+    enum Unit {
+        UNKNOW = 0;
+        BIT = 1;
+        BYTE = 2;
+        KILOBYTE = 3;
+        MEGABYTE = 4;
+        GIGABYTE = 5;
+        TERABYTE = 6;
+    }
+    uint32 value = 1;
+    Unit unit = 2;
+}
+
+message Storage {
+    enum Driver {
+        UNKNOW = 0;
+        HDD = 1;
+        SDD = 2;
+    }
+    Driver driver = 1;
+}
+
+message Keyboard {
+    enum Layout {
+        UNKNOW = 0;
+        QWERTY = 1;
+        QWERTZ = 2;
+        AZERTY = 3;
+    }
+    Layout layout = 1;
+    bool backlit = 2;
+}
+
+message Screen {
+    message Resolution {
+        uint32 width = 1;
+        uint32 height = 2;
+    }
+    enum Panel {
+        UNKNOW = 0;
+        IPS = 1;
+        OLED = 2;
+    }
+
+    float size_inch = 1;
+    Resolution esolution = 2;
+    Panel panel = 3;
+    bool multitouch = 4;
+}
