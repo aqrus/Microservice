@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  admin:
+      container_name: admin
+      build:
+        context: admin
+        dockerfile: Dockerfile
+      ports:
+        - "80:80"
+      networks:
+        - microservice
+
   postgres: 
     container_name: postgres_container
     image: postgres:14.1-alpine
@@ -13,12 +23,12 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - microservice
     # restart: unless-stopped
 
 networks:
-  postgres:
-    driver: bridge
+    microservice: 
+      driver: bridge
 
 volumes:
     postgres:
