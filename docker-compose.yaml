@@ -14,7 +14,7 @@ services:
       - "5432:5432"
     networks:
       - postgres
-    restart: unless-stopped
+    # restart: unless-stopped
 
 networks:
   postgres:
