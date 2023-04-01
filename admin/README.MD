@@ -32,11 +32,18 @@ superplate is a Next.js all-in-one project generator. Create your project with t
 To learn more about **superplate**, please check out the [Documentation](https://github.com/pankod/superplate).
 
 
-### **CSS / styled-jsx**
+### **TailwindCSS**
 
-CRA comes with built-in support for CSS and CSS Modules.
+A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
 
-[Go To Documentation](https://create-react-app.dev/docs/adding-a-stylesheets)
+[Go To Documentation](https://tailwindcss.com/docs)
+
+
+### **SASS/SCSS**
+
+Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, nested rules, mixins, functions, and more, all with a fully CSS-compatible syntax.
+
+[Go To Documentation](https://sass-lang.com/documentation)
 
 
 ### **Axios**
@@ -51,13 +58,6 @@ Promise based HTTP client for the browser and node.js.
 Storybook is an open source tool for developing UI components in isolation for React, Vue, Angular, and more. It makes building stunning UIs organized and efficient.
 
 [Go To Documentation](https://storybook.js.org/docs/react/get-started/introduction)
-
-
-### **Environment Variables**
-
-Use environment variables in your react project for server side, client or both.
-
-[Go To Documentation](https://create-react-app.dev/docs/adding-custom-environment-variables/)
 
 
 ### **Reverse Proxy**

@@ -1,22 +1,15 @@
 import React from "react";
-import Button from '@mui/material/Button';
-import { Header, Main, Cards, Footer } from "components/css";
+
+import { Container, Header, Main, Footer, Cards } from "components";
 
 const Home: React.FC = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
+    <Container>
       <Header />
-      <Button variant="contained">Hello World</Button>
       <Main />
       <Cards />
       <Footer />
-    </div>
+    </Container>
   );
 };
 
