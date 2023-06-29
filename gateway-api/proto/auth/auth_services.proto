@@ -1,0 +1,15 @@
+syntax = "proto3";
+package pb;
+option go_package = "aqrus/Microservice/gateway-api/pb";
+
+import "auth/auth_requests.proto";
+import "auth/auth_responses.proto";
+import "google/api/annotations.proto";
+service AuthService {
+    rpc Login(LoginRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/v1/auth/login"
+            body: "*"
+        };
+    }
+}

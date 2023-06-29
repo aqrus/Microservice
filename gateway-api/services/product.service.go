@@ -1,24 +1,25 @@
-package service
+package services
 
 import (
-	pb "aqrus/Microservice/gateway-api/pb/products"
+	"aqrus/Microservice/gateway-api/initializers"
+	"aqrus/Microservice/gateway-api/pb/products"
+	"aqrus/Microservice/gateway-api/services"
+	"aqrus/Microservice/gateway-api/user"
 	"context"
 	"log"
 	"net"
 	"net/http"
+
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-type ProductServer struct {
-	pb.UnimplementedProductServiceServer
-}
-
-func (server *ProductServer) CreateProduct(ctx context.Context, req *pb.CreateProductRequest) (*pb.CreateProductResponse, error) {
-	return &pb.CreateProductResponse{
-		Id: "asdasd",
-	}, nil
+func main() {
+	initializers.ConnectToBD()
+	RunGRPCServer()
+	initializers.DB.AutoMigrate(&user.User{})
+	user.RunServer(initializers.DB)
 }
 
 func RunGRPCServer() {
@@ -28,35 +29,35 @@ func RunGRPCServer() {
 	}
 	s := grpc.NewServer()
 	// Register your service implementation with the gRPC server here
-	pb.RegisterProductServiceServer(s, &ProductServer{})
+	products.RegisterProductServiceServer(s, &services.ProductServer{})
 	// Serve gRPC server
 	log.Println("Serving gRPC on 0.0.0.0:50051")
 	go func() {
-		log.Fatalln(s.Serve(lis))
+		if err := s.Serve(lis); err != nil {
+			log.Fatalf("failed to serve: %v", err)
+		}
 	}()
 
-	conn, err := grpc.DialContext(
-		context.Background(),
-		"0.0.0.0:50051",
-		grpc.WithBlock(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
+	ctx := context.Background()
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+	mux := runtime.NewServeMux()
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	err = products.RegisterProductServiceHandlerFromEndpoint(ctx, mux, "localhost:50051", opts)
 	if err != nil {
-		log.Fatalln("Failed to dial server:", err)
-	}
-	gwmux := runtime.NewServeMux()
-	// Register Greeter
-	err = pb.RegisterProductServiceHandler(context.Background(), gwmux, conn)
-	if err != nil {
-		log.Fatalln("Failed to register gateway:", err)
+		log.Fatalf("failed to register gateway: %v", err)
 	}
 
 	gwServer := &http.Server{
 		Addr:    ":8090",
-		Handler: gwmux,
+		Handler: mux,
 	}
 
 	log.Println("Serving gRPC-Gateway on http://0.0.0.0:8090")
-	log.Fatalln(gwServer.ListenAndServe())
-
+	if err := gwServer.ListenAndServe(); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
 }
+
+

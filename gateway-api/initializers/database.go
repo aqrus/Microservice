@@ -26,3 +26,5 @@ func ConnectToBD() {
 		log.Fatal("False to connect to database")
 	}
 }
+
+// Refactored code

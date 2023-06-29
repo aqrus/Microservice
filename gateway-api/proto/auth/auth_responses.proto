@@ -1,0 +1,7 @@
+syntax = "proto3";
+package pb;
+option go_package = "aqrus/Microservice/gateway-api/pb";
+
+message LoginResponse {
+    string hello = 1;
+}
